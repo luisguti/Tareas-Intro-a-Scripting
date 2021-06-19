@@ -1,5 +1,95 @@
 ---
 title: "R Notebook"
 output: html_notebook
+Student: "Luis Antonio Gutiérrez Rodas"
 ---
 
+**FUNCIONES EN R**
+
+En programación, una función es una sección de un programa que calcula un valor de manera independiente al resto del programa.
+
+Una de las grandes ventajas de R es que permite al usuario crear sus propias funciones y así extender la funcionalidad de R. 
+
+En una función tenemos 3 tipos de elementos:
+•Argumentos (o valores de entrada).
+•Cuerpo: operaciones que han de realizarse. Se deben localizar entre corchetes «{}”.
+•Resultado (o valores de salida): la última expresión que se ejecuta.
+
+**Ejemplo de una función:**
+```{r}
+funcionluis <- function(argumento1, argumento2, argumento3){
+  suma <- argumento1 + argumento2 + argumento3
+  suma
+}
+```
+
+**Ejemplo de salida de la funcion:**
+```{r}
+funcionluis(argumento1 = 10, argumento2 = 20, argumento3 = 30)
+```
+
+
+**Argumentos:**
+
+Los argumentos se separan por una coma dentro de «función()”. Puede ser cualquier tipo y cantidad de argumentos. Los argumentos son los ingredientes que necesitas para que se ejecute la función. Los argumentos pueden tener un valor predeterminado, por ejemplo si escribimos argumento2=10:
+
+**Ejemplo de un argumento por valor**
+```{r}
+funcionantonio <- function(argumento1, argumento2 = 10){
+  suma <- argumento1 + argumento2
+  suma
+}
+```
+
+**Ejemplo de salida de la funcion:**
+```{r}
+funcionantonio(argumento1 = 40)
+```
+
+-------------------------------------------------------------------------------------------------------------
+
+**FAMILIA APPLY**
+
+La familia de funciones apply es usada para aplicar una función a cada elemento de una estructura de datos. En particular, es usada para aplicar funciones en matrices, data frames, arrays y listas.
+
+La familia de funciones «apply» se diferencian según el tipo de datos de entrada y el resultado de su aplicación del siguiente modo:
+
+**Ejemplos con los datos «iris»:**
+
+```{r}
+str(iris)
+```
+***********APPLY**************
+«apply» se utiliza cuando queremos aplicar una función a las filas o columnas de una matriz o data frame(odimensión de un array); generalmente no funciona para data frames a no ser que se transforme a matriz previamente:
+
+```{r}
+apply(iris[,-5],2,mean)
+```
+***********SAPPLY**************
+«sapply» se utiliza cuando queremos aplicar una función a cada elemento de una lista o data frame y obtener unvector, matriz o una lista simplificado como resultado.
+
+```{r}
+sapply(iris[,-5],mean)
+```
+***********LAPPLY**************
+«lapply» se utiliza cuando queremos aplicar una función a cada elemento de una lista y obtener otra listacomo resultado.
+```{r}
+lapply(iris[,-5], mean)
+```
+***********TAPPLY**************
+«tapply» se utiliza cuando queremos aplicar una función a subconjuntos de un vector (estos subconjuntos se definen con un vector o factor) y obtener un vector como resultado.
+```{r}
+tapply(iris$Petal.Length,iris$Species, mean)
+```
+
+***********VAPPLY**************
+«vapply» es similares a las dos anteriores pero podemos decirle a R qué tipo de objeto queremos como resultado.
+```{r}
+vapply(iris[,-5], fivenum, c(Min.=0, "Primero."=0, Median=0, "Tercero."=0, Max.=0))
+```
+
+***********MAPPLY**************
+«mapply» se utiliza cuando queremos aplicar una función a varios tipos de estructuras (e.g. vectores, listas), a sus primeros elementos, luego a los segundos, etc. y obtener como resultado un vector o array.
+
+***********RAPPLY**************
+«rapply» se utiliza cuando queremos aplicar una función a cada elemento de un objeto con estructura de lista anidada (una lista dentro de una lista), de manera recursiva.

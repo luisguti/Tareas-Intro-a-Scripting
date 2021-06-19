@@ -215,9 +215,153 @@ pre code {
 
 
 <!-- rnb-text-begin -->
+<p><strong>FUNCIONES EN R</strong></p>
+<p>En programación, una función es una sección de un programa que calcula un valor de manera independiente al resto del programa.</p>
+<p>Una de las grandes ventajas de R es que permite al usuario crear sus propias funciones y así extender la funcionalidad de R.</p>
+<p>En una función tenemos 3 tipos de elementos: •Argumentos (o valores de entrada). •Cuerpo: operaciones que han de realizarse. Se deben localizar entre corchetes «{}”. •Resultado (o valores de salida): la última expresión que se ejecuta.</p>
+<p><strong>Ejemplo de una función:</strong></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBzdW1hIDwtIGFyZ3VtZW50bzEgKyBhcmd1bWVudG8yICsgYXJndW1lbnRvM1xuXG5gYGAifQ== -->
+<pre class="r"><code>  suma &lt;- argumento1 + argumento2 + argumento3
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3I6IG9iamV0byAnYXJndW1lbnRvMScgbm8gZW5jb250cmFkb1xuIn0= -->
+<pre><code>Error: objeto &#39;argumento1&#39; no encontrado</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Ejemplo de salida de la funcion:</strong></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZnVuY2lvbmx1aXMoYXJndW1lbnRvMSA9IDEwLCBhcmd1bWVudG8yID0gMjAsIGFyZ3VtZW50bzMgPSAzMClcblxuYGBgIn0= -->
+<pre class="r"><code>funcionluis(argumento1 = 10, argumento2 = 20, argumento3 = 30)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDYwXG4ifQ== -->
+<pre><code>[1] 60</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Argumentos:</strong></p>
+<p>Los argumentos se separan por una coma dentro de «función()”. Puede ser cualquier tipo y cantidad de argumentos. Los argumentos son los ingredientes que necesitas para que se ejecute la función. Los argumentos pueden tener un valor predeterminado, por ejemplo si escribimos argumento2=10:</p>
+<p><strong>Ejemplo de un argumento por valor</strong></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Ejemplo de salida de la funcion:</strong></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZnVuY2lvbmFudG9uaW8oYXJndW1lbnRvMSA9IDQwKVxuYGBgIn0= -->
+<pre class="r"><code>funcionantonio(argumento1 = 40)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<hr />
+<p><strong>FAMILIA APPLY</strong></p>
+<p>La familia de funciones apply es usada para aplicar una función a cada elemento de una estructura de datos. En particular, es usada para aplicar funciones en matrices, data frames, arrays y listas.</p>
+<p>La familia de funciones «apply» se diferencian según el tipo de datos de entrada y el resultado de su aplicación del siguiente modo:</p>
+<p><strong>Ejemplos con los datos «iris»:</strong></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RyKGlyaXMpXG5cbmBgYCJ9 -->
+<pre class="r"><code>str(iris)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiJ2RhdGEuZnJhbWUnOlx0MTUwIG9icy4gb2YgIDUgdmFyaWFibGVzOlxuICQgU2VwYWwuTGVuZ3RoOiBudW0gIDUuMSA0LjkgNC43IDQuNiA1IDUuNCA0LjYgNSA0LjQgNC45IC4uLlxuICQgU2VwYWwuV2lkdGggOiBudW0gIDMuNSAzIDMuMiAzLjEgMy42IDMuOSAzLjQgMy40IDIuOSAzLjEgLi4uXG4gJCBQZXRhbC5MZW5ndGg6IG51bSAgMS40IDEuNCAxLjMgMS41IDEuNCAxLjcgMS40IDEuNSAxLjQgMS41IC4uLlxuICQgUGV0YWwuV2lkdGggOiBudW0gIDAuMiAwLjIgMC4yIDAuMiAwLjIgMC40IDAuMyAwLjIgMC4yIDAuMSAuLi5cbiAkIFNwZWNpZXMgICAgIDogRmFjdG9yIHcvIDMgbGV2ZWxzIFwic2V0b3NhXCIsXCJ2ZXJzaWNvbG9yXCIsLi46IDEgMSAxIDEgMSAxIDEgMSAxIDEgLi4uXG4ifQ== -->
+<pre><code>&#39;data.frame&#39;:   150 obs. of  5 variables:
+ $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+ $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+ $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+ $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+ $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>***********APPLY************** «apply» se utiliza cuando queremos aplicar una función a las filas o columnas de una matriz o data frame(odimensión de un array); generalmente no funciona para data frames a no ser que se transforme a matriz previamente:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXBwbHkoaXJpc1ssLTVdLDIsbWVhbilcblxuYGBgIn0= -->
+<pre class="r"><code>apply(iris[,-5],2,mean)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiU2VwYWwuTGVuZ3RoICBTZXBhbC5XaWR0aCBQZXRhbC5MZW5ndGggIFBldGFsLldpZHRoIFxuICAgIDUuODQzMzMzICAgICAzLjA1NzMzMyAgICAgMy43NTgwMDAgICAgIDEuMTk5MzMzIFxuIn0= -->
+<pre><code>Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
+    5.843333     3.057333     3.758000     1.199333 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>***********SAPPLY************** «sapply» se utiliza cuando queremos aplicar una función a cada elemento de una lista o data frame y obtener unvector, matriz o una lista simplificado como resultado.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2FwcGx5KGlyaXNbLC01XSxtZWFuKVxuXG5gYGAifQ== -->
+<pre class="r"><code>sapply(iris[,-5],mean)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiU2VwYWwuTGVuZ3RoICBTZXBhbC5XaWR0aCBQZXRhbC5MZW5ndGggIFBldGFsLldpZHRoIFxuICAgIDUuODQzMzMzICAgICAzLjA1NzMzMyAgICAgMy43NTgwMDAgICAgIDEuMTk5MzMzIFxuIn0= -->
+<pre><code>Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
+    5.843333     3.057333     3.758000     1.199333 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>***********LAPPLY************** «lapply» se utiliza cuando queremos aplicar una función a cada elemento de una lista y obtener otra listacomo resultado.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGFwcGx5KGlyaXNbLC01XSwgbWVhbilcblxuYGBgIn0= -->
+<pre class="r"><code>lapply(iris[,-5], mean)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiJFNlcGFsLkxlbmd0aFxuWzFdIDUuODQzMzMzXG5cbiRTZXBhbC5XaWR0aFxuWzFdIDMuMDU3MzMzXG5cbiRQZXRhbC5MZW5ndGhcblsxXSAzLjc1OFxuXG4kUGV0YWwuV2lkdGhcblsxXSAxLjE5OTMzM1xuIn0= -->
+<pre><code>$Sepal.Length
+[1] 5.843333
+
+$Sepal.Width
+[1] 3.057333
+
+$Petal.Length
+[1] 3.758
+
+$Petal.Width
+[1] 1.199333</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>***********TAPPLY************** «tapply» se utiliza cuando queremos aplicar una función a subconjuntos de un vector (estos subconjuntos se definen con un vector o factor) y obtener un vector como resultado.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGFwcGx5KGlyaXMkUGV0YWwuTGVuZ3RoLGlyaXMkU3BlY2llcywgbWVhbilcblxuYGBgIn0= -->
+<pre class="r"><code>tapply(iris$Petal.Length,iris$Species, mean)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgIHNldG9zYSB2ZXJzaWNvbG9yICB2aXJnaW5pY2EgXG4gICAgIDEuNDYyICAgICAgNC4yNjAgICAgICA1LjU1MiBcbiJ9 -->
+<pre><code>    setosa versicolor  virginica 
+     1.462      4.260      5.552 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>***********VAPPLY************** «vapply» es similares a las dos anteriores pero podemos decirle a R qué tipo de objeto queremos como resultado.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmFwcGx5KGlyaXNbLC01XSwgZml2ZW51bSwgYyhNaW4uPTAsIFwiUHJpbWVyby5cIj0wLCBNZWRpYW49MCwgXCJUZXJjZXJvLlwiPTAsIE1heC49MCkpXG5cbmBgYCJ9 -->
+<pre class="r"><code>vapply(iris[,-5], fivenum, c(Min.=0, &quot;Primero.&quot;=0, Median=0, &quot;Tercero.&quot;=0, Max.=0))
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgU2VwYWwuTGVuZ3RoIFNlcGFsLldpZHRoIFBldGFsLkxlbmd0aCBQZXRhbC5XaWR0aFxuTWluLiAgICAgICAgICAgICAgNC4zICAgICAgICAgMi4wICAgICAgICAgMS4wMCAgICAgICAgIDAuMVxuUHJpbWVyby4gICAgICAgICAgNS4xICAgICAgICAgMi44ICAgICAgICAgMS42MCAgICAgICAgIDAuM1xuTWVkaWFuICAgICAgICAgICAgNS44ICAgICAgICAgMy4wICAgICAgICAgNC4zNSAgICAgICAgIDEuM1xuVGVyY2Vyby4gICAgICAgICAgNi40ICAgICAgICAgMy4zICAgICAgICAgNS4xMCAgICAgICAgIDEuOFxuTWF4LiAgICAgICAgICAgICAgNy45ICAgICAgICAgNC40ICAgICAgICAgNi45MCAgICAgICAgIDIuNVxuIn0= -->
+<pre><code>         Sepal.Length Sepal.Width Petal.Length Petal.Width
+Min.              4.3         2.0         1.00         0.1
+Primero.          5.1         2.8         1.60         0.3
+Median            5.8         3.0         4.35         1.3
+Tercero.          6.4         3.3         5.10         1.8
+Max.              7.9         4.4         6.90         2.5</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>***********MAPPLY************** «mapply» se utiliza cuando queremos aplicar una función a varios tipos de estructuras (e.g. vectores, listas), a sus primeros elementos, luego a los segundos, etc. y obtener como resultado un vector o array.</p>
+<p>***********RAPPLY************** «rapply» se utiliza cuando queremos aplicar una función a cada elemento de un objeto con estructura de lista anidada (una lista dentro de una lista), de manera recursiva.</p>
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQo=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNClN0dWRlbnQ6ICJMdWlzIEFudG9uaW8gR3V0acOpcnJleiBSb2RhcyINCi0tLQ0KDQoqKkZVTkNJT05FUyBFTiBSKioNCg0KRW4gcHJvZ3JhbWFjacOzbiwgdW5hIGZ1bmNpw7NuIGVzIHVuYSBzZWNjacOzbiBkZSB1biBwcm9ncmFtYSBxdWUgY2FsY3VsYSB1biB2YWxvciBkZSBtYW5lcmEgaW5kZXBlbmRpZW50ZSBhbCByZXN0byBkZWwgcHJvZ3JhbWEuDQoNClVuYSBkZSBsYXMgZ3JhbmRlcyB2ZW50YWphcyBkZSBSIGVzIHF1ZSBwZXJtaXRlIGFsIHVzdWFyaW8gY3JlYXIgc3VzIHByb3BpYXMgZnVuY2lvbmVzIHkgYXPDrSBleHRlbmRlciBsYSBmdW5jaW9uYWxpZGFkIGRlIFIuIA0KDQpFbiB1bmEgZnVuY2nDs24gdGVuZW1vcyAzIHRpcG9zIGRlIGVsZW1lbnRvczoNCuKAokFyZ3VtZW50b3MgKG8gdmFsb3JlcyBkZSBlbnRyYWRhKS4NCuKAokN1ZXJwbzogb3BlcmFjaW9uZXMgcXVlIGhhbiBkZSByZWFsaXphcnNlLiBTZSBkZWJlbiBsb2NhbGl6YXIgZW50cmUgY29yY2hldGVzIMKre33igJ0uDQrigKJSZXN1bHRhZG8gKG8gdmFsb3JlcyBkZSBzYWxpZGEpOiBsYSDDumx0aW1hIGV4cHJlc2nDs24gcXVlIHNlIGVqZWN1dGEuDQoNCioqRWplbXBsbyBkZSB1bmEgZnVuY2nDs246KioNCmBgYHtyfQ0KZnVuY2lvbmx1aXMgPC0gZnVuY3Rpb24oYXJndW1lbnRvMSwgYXJndW1lbnRvMiwgYXJndW1lbnRvMyl7DQogIHN1bWEgPC0gYXJndW1lbnRvMSArIGFyZ3VtZW50bzIgKyBhcmd1bWVudG8zDQogIHN1bWENCn0NCmBgYA0KDQoqKkVqZW1wbG8gZGUgc2FsaWRhIGRlIGxhIGZ1bmNpb246KioNCmBgYHtyfQ0KZnVuY2lvbmx1aXMoYXJndW1lbnRvMSA9IDEwLCBhcmd1bWVudG8yID0gMjAsIGFyZ3VtZW50bzMgPSAzMCkNCmBgYA0KDQoNCioqQXJndW1lbnRvczoqKg0KDQpMb3MgYXJndW1lbnRvcyBzZSBzZXBhcmFuIHBvciB1bmEgY29tYSBkZW50cm8gZGUgwqtmdW5jacOzbigp4oCdLiBQdWVkZSBzZXIgY3VhbHF1aWVyIHRpcG8geSBjYW50aWRhZCBkZSBhcmd1bWVudG9zLiBMb3MgYXJndW1lbnRvcyBzb24gbG9zIGluZ3JlZGllbnRlcyBxdWUgbmVjZXNpdGFzIHBhcmEgcXVlIHNlIGVqZWN1dGUgbGEgZnVuY2nDs24uIExvcyBhcmd1bWVudG9zIHB1ZWRlbiB0ZW5lciB1biB2YWxvciBwcmVkZXRlcm1pbmFkbywgcG9yIGVqZW1wbG8gc2kgZXNjcmliaW1vcyBhcmd1bWVudG8yPTEwOg0KDQoqKkVqZW1wbG8gZGUgdW4gYXJndW1lbnRvIHBvciB2YWxvcioqDQpgYGB7cn0NCmZ1bmNpb25hbnRvbmlvIDwtIGZ1bmN0aW9uKGFyZ3VtZW50bzEsIGFyZ3VtZW50bzIgPSAxMCl7DQogIHN1bWEgPC0gYXJndW1lbnRvMSArIGFyZ3VtZW50bzINCiAgc3VtYQ0KfQ0KYGBgDQoNCioqRWplbXBsbyBkZSBzYWxpZGEgZGUgbGEgZnVuY2lvbjoqKg0KYGBge3J9DQpmdW5jaW9uYW50b25pbyhhcmd1bWVudG8xID0gNDApDQpgYGANCg0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQ0KDQoqKkZBTUlMSUEgQVBQTFkqKg0KDQpMYSBmYW1pbGlhIGRlIGZ1bmNpb25lcyBhcHBseSBlcyB1c2FkYSBwYXJhIGFwbGljYXIgdW5hIGZ1bmNpw7NuIGEgY2FkYSBlbGVtZW50byBkZSB1bmEgZXN0cnVjdHVyYSBkZSBkYXRvcy4gRW4gcGFydGljdWxhciwgZXMgdXNhZGEgcGFyYSBhcGxpY2FyIGZ1bmNpb25lcyBlbiBtYXRyaWNlcywgZGF0YSBmcmFtZXMsIGFycmF5cyB5IGxpc3Rhcy4NCg0KTGEgZmFtaWxpYSBkZSBmdW5jaW9uZXMgwqthcHBsecK7IHNlIGRpZmVyZW5jaWFuIHNlZ8O6biBlbCB0aXBvIGRlIGRhdG9zIGRlIGVudHJhZGEgeSBlbCByZXN1bHRhZG8gZGUgc3UgYXBsaWNhY2nDs24gZGVsIHNpZ3VpZW50ZSBtb2RvOg0KDQoqKkVqZW1wbG9zIGNvbiBsb3MgZGF0b3Mgwqtpcmlzwrs6KioNCg0KYGBge3J9DQpzdHIoaXJpcykNCmBgYA0KKioqKioqKioqKipBUFBMWSoqKioqKioqKioqKioqDQrCq2FwcGx5wrsgc2UgdXRpbGl6YSBjdWFuZG8gcXVlcmVtb3MgYXBsaWNhciB1bmEgZnVuY2nDs24gYSBsYXMgZmlsYXMgbyBjb2x1bW5hcyBkZSB1bmEgbWF0cml6IG8gZGF0YSBmcmFtZShvZGltZW5zacOzbiBkZSB1biBhcnJheSk7IGdlbmVyYWxtZW50ZSBubyBmdW5jaW9uYSBwYXJhIGRhdGEgZnJhbWVzIGEgbm8gc2VyIHF1ZSBzZSB0cmFuc2Zvcm1lIGEgbWF0cml6IHByZXZpYW1lbnRlOg0KDQpgYGB7cn0NCmFwcGx5KGlyaXNbLC01XSwyLG1lYW4pDQpgYGANCioqKioqKioqKioqU0FQUExZKioqKioqKioqKioqKioNCsKrc2FwcGx5wrsgc2UgdXRpbGl6YSBjdWFuZG8gcXVlcmVtb3MgYXBsaWNhciB1bmEgZnVuY2nDs24gYSBjYWRhIGVsZW1lbnRvIGRlIHVuYSBsaXN0YSBvIGRhdGEgZnJhbWUgeSBvYnRlbmVyIHVudmVjdG9yLCBtYXRyaXogbyB1bmEgbGlzdGEgc2ltcGxpZmljYWRvIGNvbW8gcmVzdWx0YWRvLg0KDQpgYGB7cn0NCnNhcHBseShpcmlzWywtNV0sbWVhbikNCmBgYA0KKioqKioqKioqKipMQVBQTFkqKioqKioqKioqKioqKg0KwqtsYXBwbHnCuyBzZSB1dGlsaXphIGN1YW5kbyBxdWVyZW1vcyBhcGxpY2FyIHVuYSBmdW5jacOzbiBhIGNhZGEgZWxlbWVudG8gZGUgdW5hIGxpc3RhIHkgb2J0ZW5lciBvdHJhIGxpc3RhY29tbyByZXN1bHRhZG8uDQpgYGB7cn0NCmxhcHBseShpcmlzWywtNV0sIG1lYW4pDQpgYGANCioqKioqKioqKioqVEFQUExZKioqKioqKioqKioqKioNCsKrdGFwcGx5wrsgc2UgdXRpbGl6YSBjdWFuZG8gcXVlcmVtb3MgYXBsaWNhciB1bmEgZnVuY2nDs24gYSBzdWJjb25qdW50b3MgZGUgdW4gdmVjdG9yIChlc3RvcyBzdWJjb25qdW50b3Mgc2UgZGVmaW5lbiBjb24gdW4gdmVjdG9yIG8gZmFjdG9yKSB5IG9idGVuZXIgdW4gdmVjdG9yIGNvbW8gcmVzdWx0YWRvLg0KYGBge3J9DQp0YXBwbHkoaXJpcyRQZXRhbC5MZW5ndGgsaXJpcyRTcGVjaWVzLCBtZWFuKQ0KYGBgDQoNCioqKioqKioqKioqVkFQUExZKioqKioqKioqKioqKioNCsKrdmFwcGx5wrsgZXMgc2ltaWxhcmVzIGEgbGFzIGRvcyBhbnRlcmlvcmVzIHBlcm8gcG9kZW1vcyBkZWNpcmxlIGEgUiBxdcOpIHRpcG8gZGUgb2JqZXRvIHF1ZXJlbW9zIGNvbW8gcmVzdWx0YWRvLg0KYGBge3J9DQp2YXBwbHkoaXJpc1ssLTVdLCBmaXZlbnVtLCBjKE1pbi49MCwgIlByaW1lcm8uIj0wLCBNZWRpYW49MCwgIlRlcmNlcm8uIj0wLCBNYXguPTApKQ0KYGBgDQoNCioqKioqKioqKioqTUFQUExZKioqKioqKioqKioqKioNCsKrbWFwcGx5wrsgc2UgdXRpbGl6YSBjdWFuZG8gcXVlcmVtb3MgYXBsaWNhciB1bmEgZnVuY2nDs24gYSB2YXJpb3MgdGlwb3MgZGUgZXN0cnVjdHVyYXMgKGUuZy4gdmVjdG9yZXMsIGxpc3RhcyksIGEgc3VzIHByaW1lcm9zIGVsZW1lbnRvcywgbHVlZ28gYSBsb3Mgc2VndW5kb3MsIGV0Yy4geSBvYnRlbmVyIGNvbW8gcmVzdWx0YWRvIHVuIHZlY3RvciBvIGFycmF5Lg0KDQoqKioqKioqKioqKlJBUFBMWSoqKioqKioqKioqKioqDQrCq3JhcHBsecK7IHNlIHV0aWxpemEgY3VhbmRvIHF1ZXJlbW9zIGFwbGljYXIgdW5hIGZ1bmNpw7NuIGEgY2FkYSBlbGVtZW50byBkZSB1biBvYmpldG8gY29uIGVzdHJ1Y3R1cmEgZGUgbGlzdGEgYW5pZGFkYSAodW5hIGxpc3RhIGRlbnRybyBkZSB1bmEgbGlzdGEpLCBkZSBtYW5lcmEgcmVjdXJzaXZhLg==</div>
 
 
 
