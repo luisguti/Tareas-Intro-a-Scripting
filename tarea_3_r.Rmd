@@ -1,0 +1,10 @@
+---
+title: "TAREA 3 - LUIS GUTIERREZ"
+output: html_notebook
+---
+
+**CSV**
+
+Las siglas CSV vienen del inglés "Comma Separated Values" y significan valores separados por comas. Dicho esto, un archivo CSV es cualquier archivo de texto en el cual los caracteres están separados por comas, haciendo una especie de tabla en filas y columnas. Las columnas quedan definidas por cada punto y coma (;), mientras que cada fila se define mediante una línea adicional en el texto. De esta manera, se pueden crear archivos CSV con gran facilidad (lo explicamos más adelante). Es por esto que los archivos .csv están asociados directamente a la creación de tablas de contenido.
+
+**Leer un CSV desde R**
