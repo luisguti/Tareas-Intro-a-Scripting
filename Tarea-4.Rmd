@@ -2,3 +2,112 @@
 title: "Tarea 4 - Luis Gutierrez"
 output: html_notebook
 ---
+
+Construya la variable diamonds que contenga la lectura del CSV, luego explore el data frame con
+la función str( ).
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+
+diamonds <- read_csv('diamonds.csv')
+diamonds
+```
+
+**Dispersión**
+
+```{r}
+by_carat_price <- diamonds %>%
+  group_by(carat, price)
+
+by_carat_price
+
+ggplot(by_carat_price, aes(x=carat, y=price, color=clarity))+
+  geom_point()
+
+```
+**Histograma**
+
+```{r}
+ggplot(diamonds, aes(x=price)) +
+  geom_histogram(bins=40)
+
+ggplot(diamonds, aes(x=price)) +
+  geom_histogram(bins=40) + scale_x_log10()
+
+```
+
+**Boxplots**
+
+```{r}
+
+ggplot(diamonds, aes(x=cut, y=price, fill=cut)) +
+  geom_boxplot()
+```
+
+**Faceting**
+
+Filter 
+```{r}
+diamonds
+
+filtered_price <- diamonds %>%
+  filter(price > 1000, cut %in% c("Good","Ideal","Premium")) 
+
+filtered_price
+```
+Gráfico de Barras
+
+```{r}
+ggplot(filtered_price, aes(x=cut, y=depth)) +
+  geom_col()
+```
+Gráfico de Barras con colores
+
+```{r}
+ggplot(filtered_price, aes(x=cut, y=depth , fill=clarity)) +
+  geom_col()
+
+```
+
+**Grouping and summarizing**
+
+Utilice diamonds para construir un agrupamiento por la variable cut, luego aplique
+summarize para encontrar la media de las variables x, y, z (los nombres de los valores
+sumarizados serán mediaX, mediaY, mediaZ, respectivamente). Asigne el resultado a la
+variable median_dimension_diamond, por último imprima la variable.
+
+```{r}
+
+median_dimension_diamond <- diamonds %>%
+  group_by(cut) %>%
+  summarize(mediaX = median(x), mediaY = median(y), mediaZ = median(z))
+
+median_dimension_diamond
+```
+Utilice diamonds para filtrar por la variable cut igual a Premium. Luego agrupe por la
+variable clarity y utilice summarize para encontrar minimo y maximo de price (los
+nombres de los valores sumarizados serán minPrice y maxPrice, respectivamente).
+Asigne el resultado a la variable cut_premium e imprima el valor de la variable.
+
+```{r}
+cut_premium <- diamonds %>%
+  filter(cut == "Premium") %>%
+  group_by(clarity) %>%
+  summarize(minPrice = min(price), maxPrice = max(price))
+
+
+cut_premium
+```
+
+Construya un gráfico de barras y utilice cut_premium como set de datos, configure
+x=clarity, y=maxPrice y el color de relleno (fill) con la variable clarity. Por último
+devuelva el gráfico.
+
+```{r}
+
+ggplot(cut_premium, aes(x=clarity, y=maxPrice , fill=clarity)) +
+  geom_col()
+```
+
