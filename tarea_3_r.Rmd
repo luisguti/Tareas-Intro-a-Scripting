@@ -8,3 +8,46 @@ output: html_notebook
 Las siglas CSV vienen del inglés "Comma Separated Values" y significan valores separados por comas. Dicho esto, un archivo CSV es cualquier archivo de texto en el cual los caracteres están separados por comas, haciendo una especie de tabla en filas y columnas. Las columnas quedan definidas por cada punto y coma (;), mientras que cada fila se define mediante una línea adicional en el texto. De esta manera, se pueden crear archivos CSV con gran facilidad (lo explicamos más adelante). Es por esto que los archivos .csv están asociados directamente a la creación de tablas de contenido.
 
 **Leer un CSV desde R**
+
+Para leer un archivo serparado por comas o CSV se usa la función nativa de R que es **read.csv()**, la cual sirve para obtener los datos del archivo a importar en el marco de trabajo de R. También está la función **read.csv2**, la cual usa el punto y coma, como separador de los valores y la coma como punto decimal. 
+
+*Ejemplo*
+
+```{r}
+dataset_result = read.csv("primary_results.csv", header = TRUE, sep = ",")
+
+names(dataset_result)
+```
+
+**Función select()**
+
+Es una función que conserva solo las variables que se mencionan. 
+
+```{r}
+library(dplyr) 
+data(dataset_result)
+
+dataset_result
+View(dataset_result)
+dataset_result %>% dplyr::select(state,votes)
+
+
+```
+
+**Ejercicio 1**
+
+Filtrar los votos del estado de Florida
+
+
+```{r}
+dataset_result %>% dplyr::select(state,votes) %>% dplyr::filter(state == "Florida")
+```
+**Ejercicio 2.1**
+
+Filtrar votos para los candidatos Hillary Clinton o Donald Trump
+
+```{r}
+
+```
+
+
