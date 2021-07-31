@@ -69,4 +69,42 @@ questions %>%
   dplyr::mutate(gap = (creation_date_answer - creation_date_question))
   
 ```
+4. Joining question and answer counts
+
+```{r}
+answer_counts <- answers %>%
+  inner_join(questions, by = c("question_id" = "id")) %>%
+  count(question_id)
+
+answer_counts
+
+questions %>% 
+  left_join(answer_counts, by = c("id"="question_id"))
+
+questions %>% 
+  left_join(answer_counts, by = c("id"="question_id")) %>%
+  replace_na(list(n=0))
+
+question_answer_count <- questions %>% 
+  left_join(answer_counts, by = c("id"="question_id")) %>%
+  replace_na(list(n=0))
+
+question_answer_count
+```
+5. Joining questions, answers and tags
+
+```{r}
+question_tags
+tags
+
+question_tags %>%
+  inner_join(question_answer_count, by = c("question_id"="id"))
+
+relacion2 <- question_tags %>%
+  inner_join(question_answer_count, by = c("question_id"="id"))
+
+relacion2 %>%
+  inner_join(tags, by = c("tag_id"="id"))
+
+```
 
