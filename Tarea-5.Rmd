@@ -2,3 +2,71 @@
 title: "Tarea 5"
 output: html_notebook
 ---
+
+**Preguntas de Stack Overflow**
+Cargar cada set de datos
+```{r}
+library(tidyverse)
+library(dplyr)
+
+questions <- read_csv('questions.csv')
+answers <- read_csv('answers.csv')
+tags <- read_csv('tags.csv')
+question_tags <- read_csv('question_tags.csv')
+```
+
+1. Left Join
+```{r}
+questions
+question_tags
+tags
+
+questions %>%
+  left_join(question_tags, by = c("id"="question_id"))
+
+relacion <- questions %>%
+  left_join(question_tags, by = c("id"="question_id"))
+
+relacion 
+
+relacion %>%
+  left_join(tags, by = c("tag_id"="id"))
+
+questions_with_tags <- relacion %>%
+  left_join(tags, by = c("tag_id" = "id")) %>%
+  replace_na(list(tag_name="only-r"))
+
+questions_with_tags
+
+```
+2. Comparing scores across tags
+
+```{r}
+questions_with_tags %>%
+  group_by(tag_name)
+
+questions_with_tags %>%
+  group_by(tag_name) %>%
+  summarize(mean_score = mean(score))
+
+questions_with_tags %>%
+  group_by(tag_name) %>%
+  summarize(mean_score = mean(score)) %>%
+  arrange(mean_score)
+```
+
+3. Finding gaps between questions and answers
+
+```{r}
+questions
+answers
+
+questions %>%
+  inner_join(answers, by = c("id" = "question_id"), suffix = c("_question","_answer"))
+
+questions %>%
+  inner_join(answers, by = c("id" = "question_id"), suffix = c("_question","_answer")) %>%
+  dplyr::mutate(gap = (creation_date_answer - creation_date_question))
+  
+```
+
